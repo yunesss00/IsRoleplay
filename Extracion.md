@@ -30,6 +30,7 @@
 1. Borrar datos de un paciente con confirmación
 1. Poder hacer algún apunte sobre el paciente
 * Historia Clínica
+1. Añadir historia clínica
 1. No se permite la modificación
 1. Poder cancelar un tratamiento
 * Citas
