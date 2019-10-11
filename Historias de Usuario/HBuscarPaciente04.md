@@ -1,7 +1,7 @@
 **ID**:04
 **Nombre**: Buscar paciente
 
-**Prioridad** (de 1 a 10): 6
+**Prioridad** (de 1 a 10): 10
 
 **Responsable**: Cristian González Ortiz
 
