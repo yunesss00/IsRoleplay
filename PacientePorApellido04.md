@@ -1,4 +1,4 @@
-##Buscar paciente por apellido
+## Buscar paciente por apellido
 
 **ID**:04
 **Descripción**: Se introduce el apellido del paciente que se quiere buscar y el sistema lo muestra.
