@@ -1,5 +1,7 @@
 **ID:** 06 **Nombre:** Añadir entrada a Historia clínica
+
 **Prioridad** (de 1 a 10): 7
+
 **Responsable:** Youness Bettahi Berdai
 
 **Descripción**
