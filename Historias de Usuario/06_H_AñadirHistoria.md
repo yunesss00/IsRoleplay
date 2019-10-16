@@ -5,7 +5,7 @@
 **Responsable:** Youness Bettahi Berdai
 
 **Descripción**
-Como administrador quiero añadir una nueva entrada a la historia clínica del paciente para que quede reflejada en el sistema
+Como *administrador* quiero añadir una *nueva entrada* a la historia clínica del paciente para que quede reflejada en el sistema
 
 **Validacion**
 - Se debe poder añadir una entrada en la historia clínica de cualquier paciente
