@@ -1,7 +1,7 @@
 ## Extracción de requisitos
 
 #### Partes interesadas:
-* Doctora Barbero
+* Clínica
 * Equipo de desarrollo
 
 #### Datos que gestiona el sistema:
