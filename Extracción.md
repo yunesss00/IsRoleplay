@@ -11,6 +11,7 @@
   * Teléfono
   * Pública o Privada
   * Código Postal
+  * DNI
 * Historia Clínica
   * Día
   * Síntomas
