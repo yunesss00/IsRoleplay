@@ -16,7 +16,7 @@
 1. El sistema muestra por pantalla los datos del usuario.
 
 **Postcondiciones**:
-* Se muestran al administrador los datos del paciente y la opción de buscar en su Historia Médica.
+* Se muestran al administrador los datos del paciente y la opción de buscar en su Historia Médica, así como las citas.
 
 **Flujos alternativos**:
 4.a. Si no existe el paciente, se vuelve al menú principal.
