@@ -118,5 +118,6 @@ Esta clase contiene los atributos y las funciones de los tratamientos. Contiene 
 * Modificar_Tratamiento:
     * Descripción: Función que permite modificar el tratamiento en curso de un paciente.
 
-----
-![Diagrama de clases](Diagrama de clases.png)
+    ----
+
+![Diagrama de clases](Diagrama_de_clases.png)
