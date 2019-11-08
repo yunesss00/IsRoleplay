@@ -27,7 +27,7 @@ ___
 ![Mostrar Citas](https://lh6.googleusercontent.com/r62-CZLvNjsuCUBFu_z5abHvzkWRxtX_CsYrUmpi1XkljU66gdJpPLuiwj6SH22heSzSqOH8iNX8vdDhGvqX85zcVlPsYI-UtJkH1CLhT7AUbCslEZI=w1175)
 
 ### **Añadir Citas**
-![Añadir Citas](https://lh4.googleusercontent.com/JAx4Dw1t16JiYv91HxBirutmf3BdpxTvNHxbln2HUMt8dAd0h7gHGyG_iax1ZTVGLquVCGBLNrDPdl6mkdJAlBBocjAMzYHVhVRwu42FxibKqrPV7w=w1175)
+![Añadir Citas](Añadir_Cita.PNG)
 
 ### **Modificar Citas**
 ![Modficar Citas](https://lh4.googleusercontent.com/-OKQSYdrsg5vkZxUjBjUxEyLwTNpsOZO5kZGPcYYwG2iWbzYsNkmHBZG4XzzBu6pUs6yFF2xljtnA9GL5_a4oxsgnelTYQUO1bjF8hKyWS2AsWEe-zQd=w1175)
