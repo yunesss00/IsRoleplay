@@ -24,8 +24,9 @@ Esta clase almacena los datos de la citas, asi como los datos de los pacientes a
   * Descripción: Funcion que permite reemplazar los datos de una cita previamente programada.
 * Borrar_Cita:
   * Descripción: Función que permite eliminar de la base de datos una cita previamente programada.
-
-
+  
+  ----
+  
 ## Clase Historia Clínica
 #### Descripción:
 Esta clase almacena los datos clinicos de cada paciente asi como los incluidos en la clase tratamiento.
@@ -46,7 +47,9 @@ Esta clase almacena los datos clinicos de cada paciente asi como los incluidos e
   * Descripción: Constructor de la clase. Permite inicializar todos los parámetros imprescindibles para el uso de la clase.
 * Set_Historia:
   * Descripcion: Esta función recoge los datos necesarios tanto clinicos como del paciente, para añadir una historia clínica a la base de datos.
-
+  
+  ----
+  
 ## Clase Paciente
 #### Descripción:
 Esta clase contiene los atributos y las funciones de los pacientes. Entre las funciones se puede encontrar añadir un paciente nuevo, modificar datos de un paciente y mostrar una lista de los pacientes ordenada alfabéticamente.
@@ -89,7 +92,9 @@ Esta clase contiene los atributos y las funciones de los pacientes. Entre las fu
     * Descripción: Función que permite borrar un paciente de la base de datos.
 * Comentar_Paciente:
     * Descripción: Función que permite hacer apuntes sobre un paciente.
-
+    
+    ----
+    
 ## Clase Tratamiento
 #### Descripción:
 Esta clase contiene los atributos y las funciones de los tratamientos. Contiene dos funciones, añadir tratamiento y modificar tratamiento.
