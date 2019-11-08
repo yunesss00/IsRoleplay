@@ -117,3 +117,6 @@ Esta clase contiene los atributos y las funciones de los tratamientos. Contiene 
     * Descripción: Función que permite introducir un nuevo tratamiento en la historia clínica de un paciente.
 * Modificar_Tratamiento:
     * Descripción: Función que permite modificar el tratamiento en curso de un paciente.
+
+----
+![Diagrama de clases](Diagrama de clases.png)
