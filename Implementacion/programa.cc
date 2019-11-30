@@ -78,6 +78,7 @@ bool Programa::buscarPaciente(string DNI){
 	cout<<"Pulse cualquier tecla para volver al menu principal...\n";
 	cin>>menu;
 }
+
 bool Programa::mostrarDatos(string DNI){
 	fstream fichPacientes;
 	string linea,linea2,linea3,linea4,linea5,linea6;
@@ -121,15 +122,29 @@ bool Programa::mostrarDatos(string DNI){
 	cin>>menu;
 }
 
-void Programa::addCitas(Cita *cita){
-	fstream fichCitas;
-	if(!fichCitas.is_open()){
-		fichCitas.open("Citas.txt",ios::app);
+void Programa::addCitas(Cita cita){
+	list <Cita>::iterator i;
+	citas_.push_back(cita);
+	string nomfich = "Citas.txt";
+	ifstream fich(nomfich.c_str());
+
+	if(!fich){
+		ofstream(nomfich.c_str());
 	}
-	fichCitas<<"Hora:"<<cita->getHora()+"\n";
-	fichCitas<<"Dia:"<<cita->getDia()+"\n";
-	fichCitas<<"Mes:"<<cita->getMes()+"\n";
-	fichCitas<<"Anyo:"<<cita->getAnyo()<<endl;
+	fich.close();
+}
+
+void Programa::escribeCitas(){
+	list <Cita>::iterator i;
+	fstream fichCitas;
+	fichCitas.open("Citas.txt",ios::app);
+	for(i=citas_.begin();i!=citas_.end();i++){
+		fichCitas<<"Paciente:"<<i->getDNI();
+		fichCitas<<" Hora:"<<i->getHora();
+		fichCitas<<" Dia:"<<i->getDia();
+		fichCitas<<" Mes:"<<i->getMes();
+		fichCitas<<" Anyo:"<<i->getAnyo()<<endl;
+	}
 
 	fichCitas.close();
 	cout<<"\n\n\n\n\n";

@@ -13,6 +13,7 @@ así como los atributos globales que se podran utlizar en las demas clases*/
 class Programa {
 	private:
 		list <Paciente> pacientes_;
+		list <Cita> citas_;
 
 	public:
 		bool addPaciente(Paciente paciente);
@@ -21,7 +22,8 @@ class Programa {
 		bool buscarPaciente(string DNI);
 		bool mostrarDatos(string DNI);
 
-		void addCitas(Cita *cita);
+		void addCitas(Cita cita);
+		void escribeCitas();
 
 
 

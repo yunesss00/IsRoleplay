@@ -14,7 +14,7 @@ class Cita{
   public:
     Cita(string DNI,string hora,int dia,int mes,int anyo){DNI_=DNI; hora_=hora; dia_=dia; mes_=mes; anyo_=anyo;};
 
-    inline string getDni() {return DNI_;};
+    inline string getDNI() {return DNI_;};
 
     inline string getHora() {return hora_;};
     inline void setHora(string hora){hora_=hora;};

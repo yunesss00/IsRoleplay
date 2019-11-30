@@ -34,6 +34,7 @@ int main(){
   do{
 
     //system("clear");
+    cout<<endl;
     cout<<"\t ___________________________________________________"<<endl;
     cout<<"\t|                                                   |"<<endl;
     cout<<"\t|\t\t______CLINICA______                 |"<<endl;
@@ -113,26 +114,27 @@ int main(){
     break;
 
       case 8: system("clear");
-          if(pr.buscarPaciente(ci.getDni())==true){
-              fflush(stdin);
-              cout<<"Introduce la hora de la cita:";
-              cin>>hora;
-              ci.setHora(hora);
-              cin.ignore();
-              cout<<"Introduce el dia de la cita:";
-              cin>>dia;
-              ci.setDia(dia);
-              cin.ignore();
-              cout<<"Introduce el mes de la cita:";
-              cin>>mes;
-              ci.setMes(mes);
-              cin.ignore();
-              cout<<"Introduce el anyo de la cita:";
-              cin>>anyo;
-              ci.setAnyo(anyo);
-              cin.ignore();
-              pr.addCitas(&ci);
-          }
+              cout<<"Introduce el DNI del paciente:";
+              cin>>DNI;
+              if(pr.buscarPaciente(DNI)==true){
+                cout<<"Introduce la hora de la cita:";
+                cin>>hora;
+                ci.setHora(hora);
+                cout<<"Introduce el dia de la cita:";
+                cin>>dia;
+                ci.setDia(dia);
+                cout<<"Introduce el mes de la cita:";
+                cin>>mes;
+                ci.setMes(mes);
+                cout<<"Introduce el anyo de la cita:";
+                cin>>anyo;
+                ci.setAnyo(anyo);
+
+                pr.addCitas(ci);
+                pr.escribeCitas();
+              }else{
+                cout<<"Este DNI no se encuentra registrado en la base de datos."<<endl;
+              }
 
 
     break;
