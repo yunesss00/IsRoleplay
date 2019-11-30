@@ -5,7 +5,6 @@
 #include "programa.h"
 #include <list>
 #include <fstream>
-
 using namespace std;
 
 bool Programa::addPaciente(Paciente paciente){
@@ -33,12 +32,96 @@ void Programa::escribePacientes(){
 	fstream fichero;
 	fichero.open("Pacientes.txt",ios::app);
 	for(i=pacientes_.begin();i!=pacientes_.end();i++){
-		fichero<<i->getDNI()+",";
-		fichero<<i->getNombre()+",";
-		fichero<<i->getApellidos()+",";
-		fichero<<i->getTelefono()+",";
-		fichero<<i->getPublicaPrivada()+",";
-		fichero<<i->getCodigoPostal()<<endl;
+		fichero<<"DNI:"<<i->getDNI()+"\n";
+		fichero<<"Nombre:"<<i->getNombre()+"\n";
+		fichero<<"Apellidos:"<<i->getApellidos()+"\n";
+		fichero<<"Telefono:"<<i->getTelefono()+"\n";
+		fichero<<"Seguridad:"<<i->getPublicaPrivada()+"\n";
+		fichero<<"CodigoPostal:"<<i->getCodigoPostal()<<endl;
 	}
 	fichero.close();
 }
+
+bool Programa::buscarPaciente(){
+	fstream fichPacientes;
+	string DNI,linea,linea2,linea3,linea4,linea5,linea6;
+	int validacion=0;
+	string menu;
+
+	cout<<"Introduzca el DNI del paciente que quiere buscar:\n";
+	cin>>DNI;
+
+	if(!fichPacientes.is_open()){
+		fichPacientes.open("Pacientes.txt",ios::in);
+	}
+
+	while(getline(fichPacientes,linea)){
+		if(linea.find(DNI)!=string::npos){
+			cout<<"Exito al encontrar el paciente"<<endl;
+			cout<<"Mostrando datos...\n";
+			cout<<linea<<endl;
+			getline(fichPacientes,linea2);
+			cout<<linea2<<endl;
+			getline(fichPacientes,linea3);
+			cout<<linea3<<endl;
+			getline(fichPacientes,linea4);
+			cout<<linea4<<endl;
+			getline(fichPacientes,linea5);
+			cout<<linea5<<endl;
+			getline(fichPacientes,linea6);
+			cout<<linea6<<endl;
+			validacion=1;
+			cout<<"\n\n";
+		}
+	}
+
+	fichPacientes.close();
+
+	if(validacion==0){
+		cout<<"No se ha encontrado un paciente con un DNI coincidente"<<endl;
+	}
+
+	cout<<"Pulse cualquier tecla para volver al menu principal...\n";
+	cin>>menu;
+
+
+
+}
+
+/*bool Programa::addCitas(Cita cita,string dni){
+	ifstream fichPacientes;
+	fichPacientes.open("Pacientes.txt");
+	string cad;
+	Paciente aux("3624324","nombre","apellii");
+	while(getline(fichPacientes,cad,",")&&!fichPacientes.eof()){
+		if(dni==cad){
+
+		}
+	}
+
+	citas_.push_back(cita);
+	string nomfich("Citas.txt");
+	ifstream fich(nomfich.c_str());
+
+	if(!fich){
+		ofstream(nomfich.c_str());
+	}
+
+	fich.close();
+	return true;
+}
+
+void Programa::escribeCitas(){
+	list <Cita>::iterator i;
+	fstream fichero;
+	fichero.open("Citas.txt",ios::app);
+	for(i=citas_.begin();i!=citas_.end();i++){
+		fichero<<i->getDNI()+",";
+		fichero<<i->getHora()+",";
+		fichero<<i->getDia()+",";
+		fichero<<i->getMes()+",";
+		fichero<<i->getAnyo()<<endl;
+	}
+	fichero.close();
+}
+*/

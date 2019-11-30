@@ -15,7 +15,7 @@ class Paciente{
   public:
     Paciente(string dni, string nombre, string apellidos, string telefono="", string publicaPrivada=" ", int codigoPostal=0){DNI_=dni; nombre_=nombre; apellidos_=apellidos; codigoPostal_=codigoPostal; publicaPrivada_=publicaPrivada; telefono_=telefono;};
 
-    	inline string  getDNI () const {return DNI_;};
+    inline string  getDNI () const {return DNI_;};
 		inline void setDNI(string DNI){DNI_=DNI;};
 
 		inline string  getNombre () const {return nombre_;};
