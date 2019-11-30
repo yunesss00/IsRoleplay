@@ -6,6 +6,7 @@
 #include <fstream>
 
 using namespace std;
+//La clase cita que recoge y proporciona los datos relacionados a las citas
 class Cita{
   private:
     string hora_ ;

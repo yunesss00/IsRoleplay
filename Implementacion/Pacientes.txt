@@ -22,3 +22,9 @@ Apellidos:Iuuuuuu
 Telefono:1239121
 Seguridad:Privada
 CodigoPostal:12301
+DNI:Berdai
+Nombre:Youness
+Apellidos:Bettahi
+Telefono:
+Seguridad:
+CodigoPostal:0

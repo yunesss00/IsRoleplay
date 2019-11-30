@@ -8,6 +8,8 @@
 #include <list>
 using namespace std;
 
+/*La clase programa que es donde se encuentran todos los prototipos de los requisitos funcionales que se esperan,
+así como los atributos globales que se podran utlizar en las demas clases*/
 class Programa {
 	private:
 		list <Paciente> pacientes_;

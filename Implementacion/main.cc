@@ -1,3 +1,16 @@
+/*
+ ___________________________________________________________________
+|                                                                   |
+| Proyecto Ingenieria del Software Universidad de Cordoba 2019/2020 |
+|___________________________________________________________________|
+
+                            PROGRAMADORES
+                  -------------------------------------
+                        Cristian Gonzalez Ortiz
+                        Youness Bettahi Berdai
+                        Manuel de la Cueva Coca
+                  -------------------------------------
+*/
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -6,7 +19,8 @@
 #include "citas.h"
 
 using namespace std;
-
+/*Este es el archivo principal donde se llama a todas las funciones del Programa
+Consta del menu de opciones que refleja todos los requisitos funcionales que soporta nuestro software*/
 
 int main(){
 

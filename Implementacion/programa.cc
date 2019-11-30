@@ -1,3 +1,5 @@
+/*En programa.cc se encuentran todas las funciones que son llamadas de la main,
+aqui es donde estan todos los requisitos funcionales  del programa*/
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -7,14 +9,17 @@
 #include <fstream>
 using namespace std;
 
+//La funcion añadir paciente
 bool Programa::addPaciente(Paciente paciente){
 	list <Paciente>::iterator i;
-
+//Recorre la lista paciente y busca concordancia en el dni para saber si ya existe el paciente,
+//si lo encuentra, retorna false
 	for(i=pacientes_.begin();i!=pacientes_.end(); i++){
 		if(i->getDNI()==paciente.getDNI()){
 			return false;
 		}
 	}
+	//Si no encuentra el dni, sigue la ejecucion de la funcion y crea el fichero paciente.txt si no existe previamente
 	pacientes_.push_back(paciente);
 	string nomfich="Pacientes.txt";
 	ifstream fich(nomfich.c_str());
@@ -27,6 +32,7 @@ bool Programa::addPaciente(Paciente paciente){
 	return true;
 }
 
+//Escribe los pacientes en el fichero de texto pacientes.txt con el siguente formato, si existe el fichero añade informacion sin borrar lo anterior
 void Programa::escribePacientes(){
 	list <Paciente>::iterator i;
 	fstream fichero;
@@ -42,6 +48,8 @@ void Programa::escribePacientes(){
 	fichero.close();
 }
 
+/*Esta funcion busca dentro del fichero .txt mediante dni si extste alguna coincidencia
+y a continuacion proporciona todos los daatos relacionados al paciente*/
 bool Programa::buscarPaciente(){
 	fstream fichPacientes;
 	string DNI,linea,linea2,linea3,linea4,linea5,linea6;
@@ -103,6 +111,3 @@ void Programa::addCitas(Cita *cita){
 	fichCitas.close();
 	cout<<"\n\n\n\n\n";
 }
-
-
-
