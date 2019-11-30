@@ -3,7 +3,7 @@
 #include <string>
 #include "paciente.h"
 #include "programa.h"
-//#include "citas.h"
+#include "citas.h"
 
 using namespace std;
 
@@ -13,9 +13,9 @@ int main(){
   int opcion;
   Programa pr;
   Paciente pa("4663263","Cristian","Gonzalez");
-  //Cita ci("00:00",17,11,2000);
-  string nombre,apellidos,DNI,PublicaPrivada,telefono/*,hora*/;
-  int codigoPostal/*,dia,mes,anyo*/;
+  Cita ci("00:00",17,11,2000);
+  string nombre,apellidos,DNI,PublicaPrivada,telefono,hora;
+  int codigoPostal,dia,mes,anyo;
 
   do{
 
@@ -94,26 +94,28 @@ int main(){
     break;
 
       case 8: system("clear");
-              /*cout<<"Introduce el dni del paciente:";
-              cin>>DNI;
+          if(pr.buscarPaciente()==true){
+              fflush(stdin);
               cout<<"Introduce la hora de la cita:";
               cin>>hora;
               ci.setHora(hora);
+              cin.ignore();
               cout<<"Introduce el dia de la cita:";
               cin>>dia;
               ci.setDia(dia);
+              cin.ignore();
               cout<<"Introduce el mes de la cita:";
               cin>>mes;
               ci.setMes(mes);
+              cin.ignore();
               cout<<"Introduce el anyo de la cita:";
               cin>>anyo;
               ci.setAnyo(anyo);
-              if(pr.addCitas(ci,DNI)==false){
-                cout<<"No existe ningun paciente con ese DNI introducido."<<endl;
-              }
-              else{
-                cout<<"Cita registrada con exito."<<endl;
-              }*/
+              cin.ignore();
+              pr.addCitas(&ci);
+          }
+
+
     break;
 
       case 9: system("clear");

@@ -72,6 +72,7 @@ bool Programa::buscarPaciente(){
 			cout<<linea6<<endl;
 			validacion=1;
 			cout<<"\n\n";
+			return true;
 		}
 	}
 
@@ -79,6 +80,7 @@ bool Programa::buscarPaciente(){
 
 	if(validacion==0){
 		cout<<"No se ha encontrado un paciente con un DNI coincidente"<<endl;
+		return false;
 	}
 
 	cout<<"Pulse cualquier tecla para volver al menu principal...\n";
@@ -88,40 +90,19 @@ bool Programa::buscarPaciente(){
 
 }
 
-/*bool Programa::addCitas(Cita cita,string dni){
-	ifstream fichPacientes;
-	fichPacientes.open("Pacientes.txt");
-	string cad;
-	Paciente aux("3624324","nombre","apellii");
-	while(getline(fichPacientes,cad,",")&&!fichPacientes.eof()){
-		if(dni==cad){
-
-		}
+void Programa::addCitas(Cita *cita){
+	fstream fichCitas;
+	if(!fichCitas.is_open()){
+		fichCitas.open("Citas.txt",ios::app);
 	}
+	fichCitas<<"Hora:"<<cita->getHora()+"\n";
+	fichCitas<<"Dia:"<<cita->getDia()+"\n";
+	fichCitas<<"Mes:"<<cita->getMes()+"\n";
+	fichCitas<<"Anyo:"<<cita->getAnyo()<<endl;
 
-	citas_.push_back(cita);
-	string nomfich("Citas.txt");
-	ifstream fich(nomfich.c_str());
-
-	if(!fich){
-		ofstream(nomfich.c_str());
-	}
-
-	fich.close();
-	return true;
+	fichCitas.close();
+	cout<<"\n\n\n\n\n";
 }
 
-void Programa::escribeCitas(){
-	list <Cita>::iterator i;
-	fstream fichero;
-	fichero.open("Citas.txt",ios::app);
-	for(i=citas_.begin();i!=citas_.end();i++){
-		fichero<<i->getDNI()+",";
-		fichero<<i->getHora()+",";
-		fichero<<i->getDia()+",";
-		fichero<<i->getMes()+",";
-		fichero<<i->getAnyo()<<endl;
-	}
-	fichero.close();
-}
-*/
+
+

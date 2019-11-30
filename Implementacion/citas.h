@@ -1,14 +1,14 @@
+#ifndef CITAS_H
+#define CITAS_H
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#ifndef CITAS_H
-#define CITAS_H
+#include <fstream>
 
-
-
+using namespace std;
 class Cita{
   private:
-    string hora_;
+    string hora_ ;
     int dia_,mes_,anyo_;
   public:
     Cita(string hora,int dia,int mes,int anyo){hora_=hora; dia_=dia; mes_=mes; anyo_=anyo;};
