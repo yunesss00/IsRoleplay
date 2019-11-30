@@ -27,31 +27,34 @@ int main(){
   int opcion;
   Programa pr;
   Paciente pa("4663263","Cristian","Gonzalez");
-  Cita ci("00:00",17,11,2000);
+  Cita ci("12345678","00:00",17,11,2000);
   string nombre,apellidos,DNI,PublicaPrivada,telefono,hora;
   int codigoPostal,dia,mes,anyo;
 
   do{
 
     //system("clear");
-    cout<<"\t______CLINICA______"<<endl;
-    cout<<"-------------------------------------"<<endl;
-    cout<<"1.Mostar citas del dia."<<endl;
-    cout<<"------------------------------------"<<endl;
-    cout<<"\t______PACIENTES______"<<endl;
-    cout<<"------------------------------------"<<endl;
-    cout<<"2.Mostrar pacientes actuales."<<endl;
-    cout<<"3.Dar de alta a un nuevo paciente."<<endl;
-    cout<<"4.Modificar datos de un paciente."<<endl;
-    cout<<"5.Buscar paciente por dni."<<endl;
-    cout<<"6.Borrar paciente."<<endl;
-    cout<<"------------------------------------"<<endl;
-    cout<<"\t______CITAS______"<<endl;
-    cout<<"------------------------------------"<<endl;
-    cout<<"7.Mostrar citas."<<endl;
-    cout<<"8.Nueva cita."<<endl;
-    cout<<"9.Cancelar cita."<<endl;
-    cout<<"10.Cerrar sesion."<<endl;
+    cout<<"\t ___________________________________________________"<<endl;
+    cout<<"\t|                                                   |"<<endl;
+    cout<<"\t|\t\t______CLINICA______                 |"<<endl;
+    cout<<"\t|  -----------------------------------------------  |"<<endl;
+    cout<<"\t|\t1.Mostar citas del dia.                     |"<<endl;
+    cout<<"\t|  -----------------------------------------------  |"<<endl;
+    cout<<"\t|\t\t______PACIENTES______               |"<<endl;
+    cout<<"\t|  -----------------------------------------------  |"<<endl;
+    cout<<"\t|\t2.Mostrar pacientes actuales.               |"<<endl;
+    cout<<"\t|\t3.Dar de alta a un nuevo paciente.          |"<<endl;
+    cout<<"\t|\t4.Modificar datos de un paciente.           |"<<endl;
+    cout<<"\t|\t5.Buscar paciente por dni.                  |"<<endl;
+    cout<<"\t|\t6.Borrar paciente.                          |"<<endl;
+    cout<<"\t|  -----------------------------------------------  |"<<endl;
+    cout<<"\t|\t\t______CITAS______                   |"<<endl;
+    cout<<"\t|  -----------------------------------------------  |"<<endl;
+    cout<<"\t|\t7.Mostrar citas.                            |"<<endl;
+    cout<<"\t|\t8.Nueva cita.                               |"<<endl;
+    cout<<"\t|\t9.Cancelar cita.                            |"<<endl;
+    cout<<"\t|\t10.Cerrar sesion.                           |"<<endl;
+    cout<<"\t|___________________________________________________|"<<endl;
 
     cout<<"\nElige una opcion:"<<endl;
     cin>>opcion;
@@ -86,10 +89,10 @@ int main(){
               pa.setCodigoPostal(codigoPostal);
               cout<<"prueba2"<<endl;
               if(pr.addPaciente(pa)==false){
-                cout<<"Ya hay un paciente con ese DNI registrado"<<endl;
+                cout<<"\n\nYa hay un paciente con ese DNI registrado\n\n\n"<<endl;
               }
               else{
-                cout<<"Paciente registrado con exito"<<endl;
+                cout<<"\n\nPaciente registrado con exito\n\n\n"<<endl;
               }
               pr.escribePacientes();
     break;
@@ -98,7 +101,9 @@ int main(){
     break;
 
       case 5: system("clear");
-              pr.buscarPaciente();
+              cout<<"Introduzca el DNI del paciente que quiere buscar:";
+              cin>>DNI;
+              pr.mostrarDatos(DNI);
     break;
 
       case 6: system("clear");
@@ -108,7 +113,7 @@ int main(){
     break;
 
       case 8: system("clear");
-          if(pr.buscarPaciente()==true){
+          if(pr.buscarPaciente(ci.getDni())==true){
               fflush(stdin);
               cout<<"Introduce la hora de la cita:";
               cin>>hora;

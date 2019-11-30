@@ -17,14 +17,4 @@ Telefono:2348281
 Seguridad:Privada
 CodigoPostal:14011
 DNI:00000000
-Nombre:Eooo
-Apellidos:Iuuuuuu
-Telefono:1239121
-Seguridad:Privada
-CodigoPostal:12301
-DNI:Berdai
-Nombre:Youness
-Apellidos:Bettahi
-Telefono:
-Seguridad:
-CodigoPostal:0
+

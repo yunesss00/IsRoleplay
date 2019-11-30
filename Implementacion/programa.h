@@ -18,7 +18,8 @@ class Programa {
 		bool addPaciente(Paciente paciente);
 		void escribePacientes();
 
-		bool buscarPaciente();
+		bool buscarPaciente(string DNI);
+		bool mostrarDatos(string DNI);
 
 		void addCitas(Cita *cita);
 

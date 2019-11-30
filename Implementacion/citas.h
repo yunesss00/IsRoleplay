@@ -9,10 +9,12 @@ using namespace std;
 //La clase cita que recoge y proporciona los datos relacionados a las citas
 class Cita{
   private:
-    string hora_ ;
+    string hora_,DNI_;
     int dia_,mes_,anyo_;
   public:
-    Cita(string hora,int dia,int mes,int anyo){hora_=hora; dia_=dia; mes_=mes; anyo_=anyo;};
+    Cita(string DNI,string hora,int dia,int mes,int anyo){DNI_=DNI; hora_=hora; dia_=dia; mes_=mes; anyo_=anyo;};
+
+    inline string getDni() {return DNI_;};
 
     inline string getHora() {return hora_;};
     inline void setHora(string hora){hora_=hora;};
