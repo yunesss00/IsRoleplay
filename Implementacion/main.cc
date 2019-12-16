@@ -25,6 +25,7 @@ Consta del menu de opciones que refleja todos los requisitos funcionales que sop
 int main(){
 
   int opcion;
+  string continuar;
   Programa pr;
   Paciente pa("4663263","Cristian","Gonzalez");
   Cita ci("12345678","00:00",17,11,2000);
@@ -86,9 +87,7 @@ int main(){
               pa.setTelefono(telefono);
               cout<<"Codigo postal: ";
               cin>>codigoPostal;
-              cout<<"prueba1"<<endl;
               pa.setCodigoPostal(codigoPostal);
-              cout<<"prueba2"<<endl;
               if(pr.addPaciente(pa)==false){
                 cout<<"\n\nYa hay un paciente con ese DNI registrado\n\n\n"<<endl;
               }
@@ -105,33 +104,43 @@ int main(){
               cout<<"Introduzca el DNI del paciente que quiere buscar:";
               cin>>DNI;
               pr.mostrarDatos(DNI);
+              cout<<"Presione cualquier tecla para continuar..."<<endl;
+              cin>>continuar;
     break;
 
       case 6: system("clear");
     break;
 
       case 7: system("clear");
+              cout<<"Mostrando datos..."<<endl;
+              pr.mostrarCitas();
+              cout<<"Presione cualquier tecla para continuar..."<<endl;
+              cin>>continuar;
     break;
 
       case 8: system("clear");
               cout<<"Introduce el DNI del paciente:";
               cin>>DNI;
               if(pr.buscarPaciente(DNI)==true){
-                cout<<"Introduce la hora de la cita:";
+                cout<<"Introduce la hora de la cita (hora:minuto):";
                 cin>>hora;
                 ci.setHora(hora);
-                cout<<"Introduce el dia de la cita:";
+                cout<<"Introduce el dia de la cita (numero):";
                 cin>>dia;
                 ci.setDia(dia);
-                cout<<"Introduce el mes de la cita:";
+                cout<<"Introduce el mes de la cita (numero):";
                 cin>>mes;
                 ci.setMes(mes);
                 cout<<"Introduce el anyo de la cita:";
                 cin>>anyo;
                 ci.setAnyo(anyo);
 
-                pr.addCitas(ci);
-                pr.escribeCitas();
+                if(pr.comprobarCita(ci)==false){
+                  pr.addCitas(ci);
+                  pr.escribeCitas();
+                }else{
+                  cout<<"Este horario ya esta en uso"<<endl;
+                }
               }else{
                 cout<<"Este DNI no se encuentra registrado en la base de datos."<<endl;
               }

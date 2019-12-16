@@ -22,8 +22,10 @@ class Programa {
 		bool buscarPaciente(string DNI);
 		bool mostrarDatos(string DNI);
 
+		bool comprobarCita(Cita c);
 		void addCitas(Cita cita);
 		void escribeCitas();
+		bool mostrarCitas();
 
 
 

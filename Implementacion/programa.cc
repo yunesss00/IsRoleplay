@@ -50,7 +50,7 @@ void Programa::escribePacientes(){
 y a continuacion proporciona todos los daatos relacionados al paciente*/
 bool Programa::buscarPaciente(string DNI){
 	fstream fichPacientes;
-	string linea,linea2,linea3,linea4,linea5,linea6;
+	string linea;
 	int validacion=0;
 	string menu;
 
@@ -122,6 +122,26 @@ bool Programa::mostrarDatos(string DNI){
 	cin>>menu;
 }
 
+bool Programa::comprobarCita(Cita c){
+	fstream fichCitas;
+	string linea,linea2,linea3,linea4,linea5;
+	if(!fichCitas.is_open()){
+		fichCitas.open("Citas.txt",ios::in);
+	}
+
+	while((getline(fichCitas,linea,' '))&&!fichCitas.eof()){
+		getline(fichCitas,linea2,' ');
+		getline(fichCitas,linea3,' ');
+		getline(fichCitas,linea4,' ');
+		getline(fichCitas,linea5,' ');
+
+		if((linea.find(c.getDNI())==string::npos)&&(linea2.find(c.getHora())==string::npos)&&(linea3.find(c.getDia())==string::npos)&&(linea4.find(c.getMes())==string::npos)&&(linea5.find(c.getAnyo())==string::npos)){
+			return true;//existe la cita en el mismo horario
+		}
+	}
+	return false; //no exixte la cita, via libre
+}
+
 void Programa::addCitas(Cita cita){
 	list <Cita>::iterator i;
 	citas_.push_back(cita);
@@ -148,4 +168,27 @@ void Programa::escribeCitas(){
 
 	fichCitas.close();
 	cout<<"\n\n\n\n\n";
+}
+
+bool Programa::mostrarCitas(){
+	fstream fichCitas;
+	string linea,linea2,linea3,linea4,linea5;
+	if(!fichCitas.is_open()){
+		fichCitas.open("Citas.txt",ios::in);
+	}
+	while((getline(fichCitas,linea,' '))&&!fichCitas.eof()){
+		cout<<linea<<endl;
+		getline(fichCitas,linea2,' ');
+		cout<<linea2<<endl;
+		getline(fichCitas,linea3,' ');
+		cout<<linea3<<endl;
+		getline(fichCitas,linea4,' ');
+		cout<<linea4<<endl;
+		getline(fichCitas,linea5,' ');
+		cout<<linea5<<endl;
+	}
+	fichCitas.close();
+	return true;
+
+
 }

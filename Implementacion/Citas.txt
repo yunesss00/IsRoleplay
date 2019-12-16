@@ -1,0 +1,5 @@
+Paciente:12345678 Hora:12:00 Dia:23 Mes:12 Anyo:2000
+
+Paciente:12345678 Hora:12 Dia:12 Mes:12 Anyo:12
+Paciente:12345678 Hora:12 Dia:12 Mes:12 Anyo:12
+Paciente:12345678 Hora:12 Dia:12 Mes:12 Anyo:12
