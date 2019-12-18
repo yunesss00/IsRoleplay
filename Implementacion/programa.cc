@@ -149,3 +149,332 @@ void Programa::escribeCitas(){
 	fichCitas.close();
 	cout<<"\n\n\n\n\n";
 }
+
+
+void Programa::borrarPaciente(string aux){
+	ifstream fichPacientes;
+	fichPacientes.open("Pacientes.txt",ios::in);
+	ofstream temporal;
+	temporal.open("temporal.txt",ios::out);
+	string linea,linea2,linea3,linea4,linea5,linea6;
+
+	if(!fichPacientes.is_open()){
+		fichPacientes.open("Pacientes.txt",ios::in);
+	}
+
+	while(getline(fichPacientes,linea)){
+		if(linea.find(aux)!=string::npos){
+			getline(fichPacientes,linea2);
+			getline(fichPacientes,linea3);
+			getline(fichPacientes,linea4);
+			getline(fichPacientes,linea5);
+			getline(fichPacientes,linea6);
+
+			cout<<"Paciente borrado con exito\n";
+		}
+		else{
+			getline(fichPacientes,linea2);
+			getline(fichPacientes,linea3);
+			getline(fichPacientes,linea4);
+			getline(fichPacientes,linea5);
+			getline(fichPacientes,linea6);
+
+			temporal<<linea+"\n";
+			temporal<<linea2+"\n";
+			temporal<<linea3+"\n";
+			temporal<<linea4+"\n";
+			temporal<<linea5+"\n";
+			temporal<<linea6+"\n";
+		}
+
+
+	}
+	fichPacientes>>linea;
+	fichPacientes.close();
+	temporal.close();
+
+	remove("Pacientes.txt");
+	rename("temporal.txt","Pacientes.txt");
+
+
+}
+
+
+void Programa::modificarNombre(string DNI){
+	string nomaux,ape,tele,seguridad,codigo,linea,nom;
+	fstream fichPacientes;
+	fichPacientes.open("Pacientes.txt",ios::in);
+	fstream fichAux;
+	fichAux.open("auxiliar.txt",ios::out);
+
+
+	while(getline(fichPacientes,linea)){
+		if(linea.find(DNI)!=string::npos){
+			cout<<"Introduzca el nuevo nombre:"<<endl;
+			cin>>nomaux;
+			fichAux<<"DNI:"<<DNI<<endl;
+			fichAux<<"Nombre:"<<nomaux<<endl;
+			getline(fichPacientes,nom);
+				getline(fichPacientes,ape);
+				fichAux<<ape<<endl;
+				getline(fichPacientes,tele);
+				fichAux<<tele<<endl;
+				getline(fichPacientes,seguridad);
+				fichAux<<seguridad<<endl;
+				getline(fichPacientes,codigo);
+				fichAux<<codigo<<endl;	
+			
+		}
+		else{
+			fichAux<<linea<<endl;
+			getline(fichPacientes,nom);
+			fichAux<<nom<<endl;
+			getline(fichPacientes,ape);
+			fichAux<<ape<<endl;
+			getline(fichPacientes,tele);
+			fichAux<<tele<<endl;
+			getline(fichPacientes,seguridad);
+			fichAux<<seguridad<<endl;
+			getline(fichPacientes,codigo);
+			fichAux<<codigo<<endl;
+		}
+
+
+	}
+		fichPacientes.close();
+		fichAux.close();
+		remove("Pacientes.txt");
+		rename("auxiliar.txt","Pacientes.txt");
+
+
+}
+
+
+void Programa::modificarApellidos(string DNI){
+	string apeaux,ape,tele,seguridad,codigo,linea,nom;
+	fstream fichPacientes;
+	fichPacientes.open("Pacientes.txt",ios::in);
+	fstream fichAux;
+	fichAux.open("auxiliar.txt",ios::out);
+
+	while(getline(fichPacientes,linea)){
+		if(linea.find(DNI)!=string::npos){
+			cout<<"Introduzca el nuevo apellido:"<<endl;
+			cin>>apeaux;
+			fichAux<<"DNI:"<<DNI<<endl;
+			getline(fichPacientes,nom);
+			fichAux<<nom<<endl;
+				getline(fichPacientes,ape);
+				fichAux<<"Apellidos:"<<apeaux<<endl;
+				getline(fichPacientes,tele);
+				fichAux<<tele<<endl;
+				getline(fichPacientes,seguridad);
+				fichAux<<seguridad<<endl;
+				getline(fichPacientes,codigo);
+				fichAux<<codigo<<endl;	
+			
+		}
+		else{
+			fichAux<<linea<<endl;
+			getline(fichPacientes,nom);
+			fichAux<<nom<<endl;
+			getline(fichPacientes,ape);
+			fichAux<<ape<<endl;
+			getline(fichPacientes,tele);
+			fichAux<<tele<<endl;
+			getline(fichPacientes,seguridad);
+			fichAux<<seguridad<<endl;
+			getline(fichPacientes,codigo);
+			fichAux<<codigo<<endl;
+		}
+
+
+	}
+		fichPacientes.close();
+		fichAux.close();
+		remove("Pacientes.txt");
+		rename("auxiliar.txt","Pacientes.txt");
+
+
+}
+
+void Programa::modificarTelefono(string DNI){
+	string teleaux,ape,tele,seguridad,codigo,linea,nom;
+	fstream fichPacientes;
+	fichPacientes.open("Pacientes.txt",ios::in);
+	fstream fichAux;
+	fichAux.open("auxiliar.txt",ios::out);
+
+	while(getline(fichPacientes,linea)){
+		if(linea.find(DNI)!=string::npos){
+			cout<<"Introduzca el nuevo telefono:"<<endl;
+			cin>>teleaux;
+			fichAux<<"DNI:"<<DNI<<endl;
+			getline(fichPacientes,nom);
+			fichAux<<nom<<endl;
+				getline(fichPacientes,ape);
+				fichAux<<ape<<endl;
+				getline(fichPacientes,tele);
+				fichAux<<"Telefono:"<<teleaux<<endl;
+				getline(fichPacientes,seguridad);
+				fichAux<<seguridad<<endl;
+				getline(fichPacientes,codigo);
+				fichAux<<codigo<<endl;	
+			
+		}
+		else{
+			fichAux<<linea<<endl;
+			getline(fichPacientes,nom);
+			fichAux<<nom<<endl;
+			getline(fichPacientes,ape);
+			fichAux<<ape<<endl;
+			getline(fichPacientes,tele);
+			fichAux<<tele<<endl;
+			getline(fichPacientes,seguridad);
+			fichAux<<seguridad<<endl;
+			getline(fichPacientes,codigo);
+			fichAux<<codigo<<endl;
+		}
+
+
+	}
+		fichPacientes.close();
+		fichAux.close();
+		remove("Pacientes.txt");
+		rename("auxiliar.txt","Pacientes.txt");
+
+
+}
+
+
+void Programa::modificarSeguridad(string DNI){
+	string seguridadaux,ape,tele,seguridad,codigo,linea,nom;
+	fstream fichPacientes;
+	fichPacientes.open("Pacientes.txt",ios::in);
+	fstream fichAux;
+	fichAux.open("auxiliar.txt",ios::out);
+
+	while(getline(fichPacientes,linea)){
+		if(linea.find(DNI)!=string::npos){
+			cout<<"Introduzca el nuevo seguro:"<<endl;
+			cin>>seguridadaux;
+			fichAux<<"DNI:"<<DNI<<endl;
+			getline(fichPacientes,nom);
+			fichAux<<nom<<endl;
+				getline(fichPacientes,ape);
+				fichAux<<ape<<endl;
+				getline(fichPacientes,tele);
+				fichAux<<tele<<endl;
+				getline(fichPacientes,seguridad);
+				fichAux<<"Seguridad:"<<seguridadaux<<endl;
+				getline(fichPacientes,codigo);
+				fichAux<<codigo<<endl;	
+			
+		}
+		else{
+			fichAux<<linea<<endl;
+			getline(fichPacientes,nom);
+			fichAux<<nom<<endl;
+			getline(fichPacientes,ape);
+			fichAux<<ape<<endl;
+			getline(fichPacientes,tele);
+			fichAux<<tele<<endl;
+			getline(fichPacientes,seguridad);
+			fichAux<<seguridad<<endl;
+			getline(fichPacientes,codigo);
+			fichAux<<codigo<<endl;
+		}
+
+
+	}
+		fichPacientes.close();
+		fichAux.close();
+		remove("Pacientes.txt");
+		rename("auxiliar.txt","Pacientes.txt");
+}
+
+
+void Programa::modificarCodigo(string DNI){
+	string codigoaux,ape,tele,seguridad,codigo,linea,nom;
+	fstream fichPacientes;
+	fichPacientes.open("Pacientes.txt",ios::in);
+	fstream fichAux;
+	fichAux.open("auxiliar.txt",ios::out);
+
+	while(getline(fichPacientes,linea)){
+		if(linea.find(DNI)!=string::npos){
+			cout<<"Introduzca el nuevo codigo:"<<endl;
+			cin>>codigoaux;
+			fichAux<<"DNI:"<<DNI<<endl;
+			getline(fichPacientes,nom);
+			fichAux<<nom<<endl;
+				getline(fichPacientes,ape);
+				fichAux<<ape<<endl;
+				getline(fichPacientes,tele);
+				fichAux<<tele<<endl;
+				getline(fichPacientes,seguridad);
+				fichAux<<seguridad<<endl;
+				getline(fichPacientes,codigo);
+				fichAux<<"Codigo:"<<codigoaux<<endl;	
+			
+		}
+		else{
+			fichAux<<linea<<endl;
+			getline(fichPacientes,nom);
+			fichAux<<nom<<endl;
+			getline(fichPacientes,ape);
+			fichAux<<ape<<endl;
+			getline(fichPacientes,tele);
+			fichAux<<tele<<endl;
+			getline(fichPacientes,seguridad);
+			fichAux<<seguridad<<endl;
+			getline(fichPacientes,codigo);
+			fichAux<<codigo<<endl;
+		}
+
+
+	}
+		fichPacientes.close();
+		fichAux.close();
+		remove("Pacientes.txt");
+		rename("auxiliar.txt","Pacientes.txt");
+}
+
+
+void Programa::menuModificar(string DNI){
+	int opcion;
+	do{
+		cout<<"_________MODIFICAR PACIENTE__________"<<endl;
+		cout<<"1 para modificar el nombre"<<endl;
+		cout<<"2 para modificar el apellido"<<endl;
+		cout<<"3 para modificar el telefono"<<endl;
+		cout<<"4 para modificar la seguridad"<<endl;
+		cout<<"5 para modificar el codigo postal"<<endl;
+		cout<<"6 para volver al menu principal\n"<<endl;
+
+		cin>>opcion;
+
+		switch(opcion){
+			case 1: system("clear");
+					modificarNombre(DNI);
+		break;
+			case 2: system("clear");
+					modificarApellidos(DNI);
+		break;
+			case 3: system("clear");
+					modificarTelefono(DNI);
+		break;
+			case 4: system("clear");
+					modificarSeguridad(DNI);
+		break;
+			case 5: system("clear");
+					modificarCodigo(DNI);
+		break;
+		}
+
+	}while(opcion>=1 && opcion<=5);
+	
+
+
+
+}

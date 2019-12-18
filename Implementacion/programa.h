@@ -25,6 +25,17 @@ class Programa {
 		void addCitas(Cita cita);
 		void escribeCitas();
 
+		void modificarNombre(string opcion);
+		void menuModificar(string DNI);
+		void modificarApellidos(string opcion);
+		void modificarTelefono(string DNI);
+		void modificarSeguridad(string DNI);
+		void modificarCodigo(string DNI);
+
+		void borrarPaciente(string aux);
+
+
+
 
 
 

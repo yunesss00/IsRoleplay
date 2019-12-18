@@ -99,6 +99,11 @@ int main(){
     break;
 
       case 4: system("clear");
+              cout<<"Introduzca el DNI del paciente al que le quiere modificar algun dato:";
+              cin>>DNI;
+              pr.buscarPaciente(DNI);
+              cout<<"Prueba1"<<endl;
+              pr.menuModificar(DNI);
     break;
 
       case 5: system("clear");
@@ -108,6 +113,11 @@ int main(){
     break;
 
       case 6: system("clear");
+              cout<<"Introduzca el DNI del paciente que desea borrar:";
+              cin>>DNI;
+              if(pr.buscarPaciente(DNI)==true){
+                  pr.borrarPaciente(DNI);
+              }
     break;
 
       case 7: system("clear");
@@ -116,6 +126,7 @@ int main(){
       case 8: system("clear");
               cout<<"Introduce el DNI del paciente:";
               cin>>DNI;
+              ci.setDNI(DNI);
               if(pr.buscarPaciente(DNI)==true){
                 cout<<"Introduce la hora de la cita:";
                 cin>>hora;

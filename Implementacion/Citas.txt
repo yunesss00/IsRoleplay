@@ -1,0 +1,3 @@
+Paciente:12345678 Hora:18:00 Dia:12 Mes:11 Anyo:2019
+Paciente:11111111 Hora:19:05 Dia:14 Mes:12 Anyo:2020
+Paciente:12345678 Hora:6 Dia:12 Mes:11 Anyo:2019
