@@ -11,7 +11,7 @@ ___
 ### **Mostrar Lista**
 ![Mostrar Lista](Mostrar_Lista.PNG)
 
-### **Buscar Paciente por Apellido**
+### **Buscar Paciente**
 ![Buscar Paciente](Buscar_Paciente.jpg)
 
 ### **Borrar Paciente**
