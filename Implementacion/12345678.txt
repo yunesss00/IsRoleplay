@@ -1,0 +1,14 @@
+				HISTORIA CLINICA
+-----------------------------------------------
+Nombre:cristo
+Apellidos:Fernandez
+Telefono:5824812
+Seguridad:Privada
+CodigoPostal:14012
+-----------------------------------------------
+SINTOMAS
+le duele la cara de guapo
+TRATAMIENTO
+mirarse al espejo 4 veces al dia
+REGULARIDAD
+4 veces al dia

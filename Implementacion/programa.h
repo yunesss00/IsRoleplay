@@ -37,6 +37,9 @@ class Programa {
 
 		void mostrarPacientes();
 
+		void anadirHistoria(string DNI);
+		void mostrarHistoria(string DNI);
+
 
 
 

@@ -23,12 +23,12 @@ using namespace std;
 Consta del menu de opciones que refleja todos los requisitos funcionales que soporta nuestro software*/
 
 int main(){
-
+  int op;
   int opcion;
   Programa pr;
   Paciente pa("4663263","Cristian","Gonzalez");
   Cita ci("12345678","00:00",17,11,2000);
-  string nombre,apellidos,DNI,PublicaPrivada,telefono,hora;
+  string nombre,apellidos,apellido1,apellido2,DNI,PublicaPrivada,telefono,hora;
   int codigoPostal,dia,mes,anyo;
 
   do{
@@ -37,24 +37,26 @@ int main(){
     cout<<endl;
     cout<<"\t ___________________________________________________"<<endl;
     cout<<"\t|                                                   |"<<endl;
-    cout<<"\t|\t\t______CLINICA______                 |"<<endl;
+    cout<<"\t|               ______CLINICA______                 |"<<endl;
     cout<<"\t|  -----------------------------------------------  |"<<endl;
-    cout<<"\t|\t1.Mostar citas del dia.                     |"<<endl;
+    cout<<"\t|       1.Mostar citas del dia.                     |"<<endl;
     cout<<"\t|  -----------------------------------------------  |"<<endl;
-    cout<<"\t|\t\t______PACIENTES______               |"<<endl;
+    cout<<"\t|               ______PACIENTES______               |"<<endl;
     cout<<"\t|  -----------------------------------------------  |"<<endl;
-    cout<<"\t|\t2.Mostrar pacientes actuales.               |"<<endl;
-    cout<<"\t|\t3.Dar de alta a un nuevo paciente.          |"<<endl;
-    cout<<"\t|\t4.Modificar datos de un paciente.           |"<<endl;
-    cout<<"\t|\t5.Buscar paciente por dni.                  |"<<endl;
-    cout<<"\t|\t6.Borrar paciente.                          |"<<endl;
+    cout<<"\t|       2.Mostrar pacientes actuales.               |"<<endl;
+    cout<<"\t|       3.Dar de alta a un nuevo paciente.          |"<<endl;
+    cout<<"\t|       4.Modificar datos de un paciente.           |"<<endl;
+    cout<<"\t|       5.Buscar paciente por dni.                  |"<<endl;
+    cout<<"\t|       6.Borrar paciente.                          |"<<endl;
     cout<<"\t|  -----------------------------------------------  |"<<endl;
-    cout<<"\t|\t\t______CITAS______                   |"<<endl;
+    cout<<"\t|               ______CITAS______                   |"<<endl;
     cout<<"\t|  -----------------------------------------------  |"<<endl;
-    cout<<"\t|\t7.Mostrar citas.                            |"<<endl;
-    cout<<"\t|\t8.Nueva cita.                               |"<<endl;
-    cout<<"\t|\t9.Cancelar cita.                            |"<<endl;
-    cout<<"\t|\t10.Cerrar sesion.                           |"<<endl;
+    cout<<"\t|       7.Mostrar citas.                            |"<<endl;
+    cout<<"\t|       8.Nueva cita.                               |"<<endl;
+    cout<<"\t|       9.Cancelar cita.                            |"<<endl;
+    cout<<"\t|  -----------------------------------------------  |"<<endl;
+    cout<<"\t|       10.Añadir Historia Clínica.                 |"<<endl;
+    cout<<"\t|       11.Cerrar sesion.                           |"<<endl;
     cout<<"\t|___________________________________________________|"<<endl;
 
     cout<<"\nElige una opcion:"<<endl;
@@ -71,11 +73,15 @@ int main(){
 
       case 3: system("clear");
               cout<<"Introduce los datos del paciente"<<endl;
+              cout<<"(Si tiene un nombre o un apellido compuesto, escríbalo sin espacios) "<<endl;
               cout<<"Nombre: ";
               cin>>nombre;
               pa.setNombre(nombre);
-              cout<<"Apellidos: ";
-              cin>>apellidos;
+              cout<<"Apellido1: ";
+              cin>>apellido1;
+              cout<<"Apellido2: ";
+              cin>>apellido2;
+              apellidos=apellido1+","+apellido2;
               pa.setApellidos(apellidos);
               cout<<"DNI: ";
               cin>>DNI;
@@ -112,6 +118,15 @@ int main(){
               cout<<"Introduzca el DNI del paciente que quiere buscar:";
               cin>>DNI;
               pr.mostrarDatos(DNI);
+
+              cout<<"¿Desea acceder a la historia clinica del paciente?"<<endl;
+              cout<<"Introduzca [0] para acceder"<<endl;
+              cout<<"Introduzca [1] para salir"<<endl;
+              cin>>op;
+              if(op==0){
+              	pr.mostrarHistoria(DNI);
+              }
+
     break;
 
       case 6: system("clear");
@@ -148,7 +163,7 @@ int main(){
                    pr.addCitas(ci);
                    pr.escribeCitas();
                 }
-      
+
               }else{
                 cout<<"Este DNI no se encuentra registrado en la base de datos."<<endl;
               }
@@ -179,11 +194,21 @@ int main(){
                 cout<<"Este DNI no se encuentra registrado en la base de datos."<<endl;
               }
     break;
-    
+
+ case 10: system("clear");
+
+     cout<<"Introduzca el DNI del paciente al que desea añadir una historia clinica:";
+              cin>>DNI;
+              if(pr.buscarPaciente(DNI)==true){
+                  pr.anadirHistoria(DNI);
+              }
+              break;
+
+
       default: cout<<"No existe esta opcion."<<endl;
     }
 
-  }while(opcion>=1 && opcion<=9);
+  }while(opcion>=1 && opcion<=10);
 
 
 

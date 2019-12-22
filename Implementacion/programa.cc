@@ -81,46 +81,59 @@ bool Programa::buscarPaciente(string DNI){
 }
 
 bool Programa::mostrarDatos(string DNI){
-	fstream fichPacientes;
-	string linea,linea2,linea3,linea4,linea5,linea6;
-	int validacion=0;
-	string menu;
+fstream fichPacientes;
+string linea,linea2,linea3,linea4,linea5,linea6;
+int validacion=0;
+string menu;
+fstream fichCitas;
+fichCitas.open("Citas.txt",ios::in);
+string searchpaciente="Paciente:"+DNI;
+string paciente,hora,fecha;
 
-	if(!fichPacientes.is_open()){
-		fichPacientes.open("Pacientes.txt",ios::in);
-	}
+if(!fichPacientes.is_open()){
+fichPacientes.open("Pacientes.txt",ios::in);
+}
 
-	while(getline(fichPacientes,linea)){
-		if(linea.find(DNI)!=string::npos){
-			cout<<"\nMostrando datos...\n";
-			cout<<linea<<endl;
-			getline(fichPacientes,linea2);
-			cout<<linea2<<endl;
-			getline(fichPacientes,linea3);
-			cout<<linea3<<endl;
-			getline(fichPacientes,linea4);
-			cout<<linea4<<endl;
-			getline(fichPacientes,linea5);
-			cout<<linea5<<endl;
-			getline(fichPacientes,linea6);
-			cout<<linea6<<endl;
-			validacion=1;
-			cout<<"\n\n";
-			return true;
-		}
-	}
+while(getline(fichPacientes,linea)){
+if(linea.find(DNI)!=string::npos){
+cout<<"\nMostrando datos...\n";
+cout<<linea<<endl;
+getline(fichPacientes,linea2);
+cout<<linea2<<endl;
+getline(fichPacientes,linea3);
+cout<<linea3<<endl;
+getline(fichPacientes,linea4);
+cout<<linea4<<endl;
+getline(fichPacientes,linea5);
+cout<<linea5<<endl;
+getline(fichPacientes,linea6);
+cout<<linea6<<endl;
+validacion=1;
+cout<<"\n\n";
+cout<<"Citas de este paciente:"<<endl;
+while(!fichCitas.eof()){
+fichCitas>>paciente>>hora>>fecha;
+if(searchpaciente==paciente){
+cout<<paciente<<' '<<hora<<' '<<fecha<<endl;
+}
+}
 
-	fichPacientes.close();
+return true;
+}
+}
 
-	if(validacion==0){
-		cout<<"No se ha encontrado un paciente con un DNI coincidente"<<endl;
-		return false;
-	}else{
-		cout<<"Exito al encontrar el paciente"<<endl;
-	}
+fichPacientes.close();
+fichCitas.close();
 
-	cout<<"Pulse cualquier tecla para volver al menu principal...\n";
-	cin>>menu;
+if(validacion==0){
+cout<<"No se ha encontrado un paciente con un DNI coincidente"<<endl;
+return false;
+}else{
+cout<<"Exito al encontrar el paciente"<<endl;
+}
+
+cout<<"Pulse cualquier tecla para volver al menu principal...\n";
+cin>>menu;
 }
 
 void Programa::addCitas(Cita cita){
@@ -249,8 +262,8 @@ void Programa::modificarNombre(string DNI){
 				getline(fichPacientes,seguridad);
 				fichAux<<seguridad<<endl;
 				getline(fichPacientes,codigo);
-				fichAux<<codigo<<endl;	
-			
+				fichAux<<codigo<<endl;
+
 		}
 		else{
 			fichAux<<linea<<endl;
@@ -298,8 +311,8 @@ void Programa::modificarApellidos(string DNI){
 				getline(fichPacientes,seguridad);
 				fichAux<<seguridad<<endl;
 				getline(fichPacientes,codigo);
-				fichAux<<codigo<<endl;	
-			
+				fichAux<<codigo<<endl;
+
 		}
 		else{
 			fichAux<<linea<<endl;
@@ -346,8 +359,8 @@ void Programa::modificarTelefono(string DNI){
 				getline(fichPacientes,seguridad);
 				fichAux<<seguridad<<endl;
 				getline(fichPacientes,codigo);
-				fichAux<<codigo<<endl;	
-			
+				fichAux<<codigo<<endl;
+
 		}
 		else{
 			fichAux<<linea<<endl;
@@ -395,8 +408,8 @@ void Programa::modificarSeguridad(string DNI){
 				getline(fichPacientes,seguridad);
 				fichAux<<"Seguridad:"<<seguridadaux<<endl;
 				getline(fichPacientes,codigo);
-				fichAux<<codigo<<endl;	
-			
+				fichAux<<codigo<<endl;
+
 		}
 		else{
 			fichAux<<linea<<endl;
@@ -442,8 +455,8 @@ void Programa::modificarCodigo(string DNI){
 				getline(fichPacientes,seguridad);
 				fichAux<<seguridad<<endl;
 				getline(fichPacientes,codigo);
-				fichAux<<"Codigo:"<<codigoaux<<endl;	
-			
+				fichAux<<"Codigo:"<<codigoaux<<endl;
+
 		}
 		else{
 			fichAux<<linea<<endl;
@@ -471,7 +484,7 @@ void Programa::modificarCodigo(string DNI){
 void Programa::menuModificar(string DNI){
 	int opcion;
 	do{
-		cout<<"_________MODIFICAR PACIENTE__________"<<endl;
+		cout<<"_________MODIFICAR PACIENTE__________\n"<<endl;
 		cout<<"1 para modificar el nombre"<<endl;
 		cout<<"2 para modificar el apellido"<<endl;
 		cout<<"3 para modificar el telefono"<<endl;
@@ -500,7 +513,7 @@ void Programa::menuModificar(string DNI){
 		}
 
 	}while(opcion>=1 && opcion<=5);
-	
+
 }
 
 void Programa::mostrarPacientes(){
@@ -524,4 +537,95 @@ void Programa::mostrarPacientes(){
 	}
 
 	fichPacientes.close();
+}
+
+void Programa::anadirHistoria(string DNI){
+    char sintoma[250];
+    char tratamiento[250];
+    char regularidad[250];
+    int dec;
+	ifstream fichPacientes;
+	fichPacientes.open("Pacientes.txt",ios::in);
+	ofstream fichHistoria;
+	fichHistoria.open(DNI+".txt",ios::out);
+	string linea,linea2,linea3,linea4,linea5,linea6;
+
+   string nomfich=DNI+".txt";
+	ifstream fich(nomfich.c_str());
+
+	if(!fichPacientes.is_open()){
+		fichPacientes.open("Pacientes.txt",ios::in);
+	}
+
+	while(getline(fichPacientes,linea)){
+		if(linea.find(DNI)!=string::npos){
+			getline(fichPacientes,linea2);
+			getline(fichPacientes,linea3);
+			getline(fichPacientes,linea4);
+			getline(fichPacientes,linea5);
+			getline(fichPacientes,linea6);
+
+		}
+
+		}
+            fichHistoria<<"\t\t\t\tHISTORIA CLINICA\n";
+            fichHistoria<<"-----------------------------------------------"<<endl;
+
+			fichHistoria<<linea2+"\n";
+			fichHistoria<<linea3+"\n";
+			fichHistoria<<linea4+"\n";
+			fichHistoria<<linea5+"\n";
+			fichHistoria<<linea6+"\n";
+			
+
+
+          cout<<"\n\n\nIntroduce los sintomas que presenta el paciente:"<<endl;
+          getchar();
+          cin.getline(sintoma,250,'\n');
+          fichHistoria<<"-----------------------------------------------"<<endl;
+          fichHistoria<<"SINTOMAS\n";
+	       fichHistoria<<sintoma;
+
+          cout<<"Introduzca:\n [0] si desea añadir un tratamiento\n [1] si no desea añadir un tratamiento"<<endl;
+          cin>>dec;
+
+          if(dec=1){
+          	fichHistoria<<"\nTRATAMIENTO\n";
+          cout<<"\nIntroduce el tratamiento que presenta el paciente:"<<endl;
+          getchar();
+           cin.getline(tratamiento,250,'\n');
+
+			fichHistoria<<tratamiento;
+
+          cout<<"\nIntroduce la regularidad del tratamiento que presenta el paciente:"<<endl;
+           fichHistoria<<"\nREGULARIDAD\n";
+           cin.getline(regularidad,250,'\n');
+
+			fichHistoria<<regularidad;
+                    }
+         cout<<"Historia añadida con exito"<<endl;
+
+
+	fichPacientes.close();
+	fichHistoria.close();
+
+}
+
+  void Programa::mostrarHistoria(string DNI){
+      string cadena;
+    fstream fichHistoria;
+	fichHistoria.open(DNI+".txt",ios::in);
+     if(fichHistoria.is_open()){
+            while(!fichHistoria.eof()){
+      	    	getline(fichHistoria,cadena);
+
+      		cout<<cadena<<endl;
+            }
+ 		}
+
+ 		else{cout<<"Error al abrir la Historia clinica"<<endl;}
+
+      fichHistoria.close();	
+
+  
 }

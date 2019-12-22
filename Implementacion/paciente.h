@@ -8,7 +8,7 @@ using namespace std;
 
 class Paciente{
   private:
-    string nombre_, apellidos_,publicaPrivada_,DNI_;
+    string nombre_,apellidos_,publicaPrivada_,DNI_;
     string telefono_;
     int codigoPostal_;
 
