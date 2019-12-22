@@ -43,6 +43,7 @@ void Programa::escribePacientes(){
 		fichero<<"Seguridad:"<<i->getPublicaPrivada()+"\n";
 		fichero<<"CodigoPostal:"<<i->getCodigoPostal()<<endl;
 	}
+	pacientes_.erase(pacientes_.begin(),pacientes_.end());
 	fichero.close();
 }
 
@@ -137,17 +138,43 @@ void Programa::addCitas(Cita cita){
 void Programa::escribeCitas(){
 	list <Cita>::iterator i;
 	fstream fichCitas;
+	//fstream fichCitas2;
 	fichCitas.open("Citas.txt",ios::app);
+	//string buscahora,buscadia,buscames,buscaanyo,buscafecha;
+	string paciente,hora,fecha;
 	for(i=citas_.begin();i!=citas_.end();i++){
-		fichCitas<<"Paciente:"<<i->getDNI();
-		fichCitas<<" Hora:"<<i->getHora();
-		fichCitas<<" Dia:"<<i->getDia();
-		fichCitas<<" Mes:"<<i->getMes();
-		fichCitas<<" Anyo:"<<i->getAnyo()<<endl;
+				fichCitas<<"Paciente:"<<i->getDNI();
+				fichCitas<<" Hora:"<<i->getHora();
+				fichCitas<<" "<<i->getDia()<<"/"<<i->getMes()<<"/"<<i->getAnyo()<<endl;
 	}
-
+	citas_.erase(citas_.begin(),citas_.end());
 	fichCitas.close();
 	cout<<"\n\n\n\n\n";
+
+}
+
+bool Programa::buscarCita(Cita cita){
+	fstream fichCitas;
+	fichCitas.open("Citas.txt",ios::in);
+	string paciente,hora,fecha;
+	if(!fichCitas.is_open()){
+		fichCitas.open("Citas.txt",ios::in);
+	}
+
+	string buscarhora="Hora:"+cita.getHora();
+	string budia=std::to_string(cita.getDia());
+	string bumes=std::to_string(cita.getMes());
+	string buanyo=std::to_string(cita.getAnyo());
+	string buscarfecha=budia+"/"+bumes+"/"+buanyo;
+	while(!fichCitas.eof()){
+		fichCitas>>paciente>>hora>>fecha;
+		if((hora==buscarhora)&&(fecha==buscarfecha)){
+			cout<<"Esta hora ya esta ocupada. Pruebe otra\n";
+			return true;
+		}
+	}
+	return false;
+	fichCitas.close();
 }
 
 
@@ -474,7 +501,27 @@ void Programa::menuModificar(string DNI){
 
 	}while(opcion>=1 && opcion<=5);
 	
+}
 
+void Programa::mostrarPacientes(){
+	fstream fichPacientes;
+	fichPacientes.open("Pacientes.txt",ios::in);
+	string linea,linea2,linea3,linea4,linea5,linea6;
 
+	while(getline(fichPacientes,linea)){
+		cout<<linea+"\n";
+		getline(fichPacientes,linea2);
+		cout<<linea2+"\n";
+		getline(fichPacientes,linea3);
+		cout<<linea3+"\n";
+		getline(fichPacientes,linea4);
+		cout<<linea4+"\n";
+		getline(fichPacientes,linea5);
+		cout<<linea5+"\n";
+		getline(fichPacientes,linea6);
+		cout<<linea6+"\n";
+		cout<<"\n";
+	}
 
+	fichPacientes.close();
 }

@@ -29,6 +29,10 @@ class Cita{
     inline int getAnyo() {return anyo_;};
     inline void setAnyo(int anyo){anyo_=anyo;};
 
+    void mostrarCitas();
+    void mostrarCitasTotales();
+    void cancelarCita(Cita aux);
+
 
 };
 

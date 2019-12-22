@@ -1,3 +1,8 @@
-Paciente:12345678 Hora:18:00 Dia:12 Mes:11 Anyo:2019
-Paciente:11111111 Hora:19:05 Dia:14 Mes:12 Anyo:2020
-Paciente:12345678 Hora:6 Dia:12 Mes:11 Anyo:2019
+Paciente:5555555 Hora:19:32 20/10/2021
+Paciente:12345678 Hora:10:02 31/1/2022
+Paciente:9999999 Hora:19:32 19/12/2019
+Paciente:12345678 Hora:19:21 22/5/2030
+Paciente:12345678 Hora:15:02 29/12/2019
+Paciente:12345678 Hora:15:42 21/12/2019
+Paciente:12345678 Hora:19:03 22/12/2019
+Paciente:12345678 Hora:11:08 22/12/2019

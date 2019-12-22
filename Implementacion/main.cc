@@ -62,9 +62,11 @@ int main(){
 
     switch(opcion){
       case 1: system("clear");
+              ci.mostrarCitas();
     break;
 
       case 2: system("clear");
+              pr.mostrarPacientes();
     break;
 
       case 3: system("clear");
@@ -121,6 +123,7 @@ int main(){
     break;
 
       case 7: system("clear");
+              ci.mostrarCitasTotales();
     break;
 
       case 8: system("clear");
@@ -141,8 +144,11 @@ int main(){
                 cin>>anyo;
                 ci.setAnyo(anyo);
 
-                pr.addCitas(ci);
-                pr.escribeCitas();
+                if(pr.buscarCita(ci)==false){
+                   pr.addCitas(ci);
+                   pr.escribeCitas();
+                }
+      
               }else{
                 cout<<"Este DNI no se encuentra registrado en la base de datos."<<endl;
               }
@@ -151,15 +157,33 @@ int main(){
     break;
 
       case 9: system("clear");
+              cout<<"Introduce el DNI del paciente:";
+              cin>>DNI;
+              ci.setDNI(DNI);
+              if(pr.buscarPaciente(DNI)==true){
+                cout<<"Introduce la hora de la cita:";
+                cin>>hora;
+                ci.setHora(hora);
+                cout<<"Introduce el dia de la cita:";
+                cin>>dia;
+                ci.setDia(dia);
+                cout<<"Introduce el mes de la cita:";
+                cin>>mes;
+                ci.setMes(mes);
+                cout<<"Introduce el anyo de la cita:";
+                cin>>anyo;
+                ci.setAnyo(anyo);
+                ci.cancelarCita(ci);
+              }
+              else{
+                cout<<"Este DNI no se encuentra registrado en la base de datos."<<endl;
+              }
     break;
-
-      case 10: system("clear");
-    break;
-
+    
       default: cout<<"No existe esta opcion."<<endl;
     }
 
-  }while(opcion>=1 && opcion<=10);
+  }while(opcion>=1 && opcion<=9);
 
 
 

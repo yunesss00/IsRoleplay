@@ -24,6 +24,7 @@ class Programa {
 
 		void addCitas(Cita cita);
 		void escribeCitas();
+		bool buscarCita(Cita cita);
 
 		void modificarNombre(string opcion);
 		void menuModificar(string DNI);
@@ -33,6 +34,8 @@ class Programa {
 		void modificarCodigo(string DNI);
 
 		void borrarPaciente(string aux);
+
+		void mostrarPacientes();
 
 
 
