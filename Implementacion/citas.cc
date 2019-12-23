@@ -27,8 +27,7 @@ using namespace std;
 
 
 void Cita::mostrarCitas(){
-	fstream fichCitas;
-	fichCitas.open("Citas.txt",ios::in);
+	int cont=0;
 	time_t now = time(0);
 	tm * time = localtime(&now);
 	string paciente,hora,fecha;
@@ -38,6 +37,14 @@ void Cita::mostrarCitas(){
 	cout<<" Mes "<<time->tm_mon+1;
 	cout<<" Year "<<anyo;
 	cout<<" Hora "<<time->tm_hour<<":"<<time->tm_min<<":"<<time->tm_sec;*/
+  string nomfich = "Citas.txt";
+	ifstream fichCitas(nomfich.c_str());
+
+	if(!fichCitas){
+		ofstream fichCitas(nomfich.c_str());
+		
+	}
+	fichCitas.close();
 
 	if(!fichCitas.is_open()){
 		fichCitas.open("Citas.txt",ios::in);
@@ -52,13 +59,23 @@ void Cita::mostrarCitas(){
 	while(!fichCitas.eof()){
 		fichCitas>>paciente>>hora>>fecha;
 		if(fecha==combo){
+
+			cont++;
 			cout<<paciente<<" "<<hora<<" "<<fecha<<endl;
 		}
-		
+
 	}
 	
 
 	fichCitas.close();
+
+	if (cont==0){
+          cout<<"No hay citas programadas para hoy"<<endl;
+
+	}
+	else{
+		cout<<"....Estas son las citas de hoy"<<endl;
+	}
 
 }
 

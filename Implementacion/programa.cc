@@ -66,7 +66,7 @@ bool Programa::buscarPaciente(string DNI){
 		if(linea==buscaDNI){
 			validacion=1;
 			cout<<"\n\n";
-			return true;
+			
 		}
 	}
 
@@ -77,10 +77,9 @@ bool Programa::buscarPaciente(string DNI){
 		return false;
 	}else{
 		cout<<"Exito al encontrar el paciente"<<endl;
+		return true;
 	}
 
-	cout<<"Pulse cualquier tecla para volver al menu principal...\n";
-	cin>>menu;
 }
 
 bool Programa::mostrarDatos(string DNI){
@@ -122,7 +121,6 @@ cout<<paciente<<' '<<hora<<' '<<fecha<<endl;
 }
 }
 
-return true;
 }
 }
 
@@ -132,11 +130,11 @@ fichCitas.close();
 if(validacion==0){
 return false;
 }else{
+
 cout<<"Exito al encontrar el paciente"<<endl;
+return true;
 }
 
-cout<<"Pulse cualquier tecla para volver al menu principal...\n";
-cin>>menu;
 }
 
 void Programa::addCitas(Cita cita){
@@ -189,8 +187,9 @@ bool Programa::buscarCita(Cita cita){
 			return true;
 		}
 	}
-	return false;
 	fichCitas.close();
+	return false;
+	
 }
 
 
@@ -489,7 +488,7 @@ void Programa::menuModificar(string DNI){
 	do{
 		cout<<"_________MODIFICAR PACIENTE__________\n"<<endl;
 		cout<<"1 para modificar el nombre"<<endl;
-		cout<<"2 para modificar el apellido"<<endl;
+		cout<<"2 para modificar los apellidos"<<endl;
 		cout<<"3 para modificar el telefono"<<endl;
 		cout<<"4 para modificar la seguridad"<<endl;
 		cout<<"5 para modificar el codigo postal"<<endl;
@@ -560,7 +559,7 @@ void Programa::anadirHistoria(string DNI){
 	
 
 	//if(existe(DNI)==false){
-			cout<<"No he encontrado el fichero"<<endl;
+			
 	
 	fichHistoria.open(DNI+".txt",ios::out);
 	fichHistoria.close();
@@ -584,7 +583,7 @@ void Programa::anadirHistoria(string DNI){
 
 		}
 
-		}  cout<<"HEEEEHEEEE"<<endl;
+		}  
             fichHistoria<<"\t\t\t\tHISTORIA CLINICA\n";
             fichHistoria<<"-----------------------------------------------"<<endl;
 
@@ -635,7 +634,7 @@ void Programa::anadirHistoria(string DNI){
            
            //if(existe(DNI)==true){
             else{
-           	cout<<"He encontrado el fichero"<<endl;
+           	
            	fstream fichHistoria;
            	fichHistoria.open(DNI+".txt",ios::app);
 

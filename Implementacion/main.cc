@@ -109,9 +109,9 @@ int main(){
       case 4: system("clear");
               cout<<"Introduzca el DNI del paciente al que le quiere modificar algun dato:";
               cin>>DNI;
-              pr.buscarPaciente(DNI);
-              cout<<"Prueba1"<<endl;
-              pr.menuModificar(DNI);
+              if(pr.buscarPaciente(DNI)==true){
+              	pr.menuModificar(DNI);}
+              
     break;
 
       case 5: system("clear");
@@ -204,11 +204,18 @@ int main(){
               }
               break;
 
+ case 11: system("clear");
+		cout<<"Saliendo del programa..."<<endl;
+
+		exit(-1);
+
+     
+              break;
 
       default: cout<<"No existe esta opcion."<<endl;
     }
 
-  }while(opcion>=1 && opcion<=10);
+  }while(opcion>=1 && opcion<=11);
 
 
 
