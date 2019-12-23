@@ -118,7 +118,7 @@ int main(){
               cout<<"Introduzca el DNI del paciente que quiere buscar:";
               cin>>DNI;
               pr.mostrarDatos(DNI);
-
+               if(pr.buscarPaciente(DNI)==true){
               cout<<"¿Desea acceder a la historia clinica del paciente?"<<endl;
               cout<<"Introduzca [0] para acceder"<<endl;
               cout<<"Introduzca [1] para salir"<<endl;
@@ -126,7 +126,7 @@ int main(){
               if(op==0){
               	pr.mostrarHistoria(DNI);
               }
-
+              }
     break;
 
       case 6: system("clear");

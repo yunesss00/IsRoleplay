@@ -23,6 +23,7 @@ if(buscarPaciente(paciente.getDNI())==true){
 	ifstream fich(nomfich.c_str());
 
 	if(!fich){
+
 		ofstream(nomfich.c_str());
 	}
 
@@ -50,6 +51,8 @@ void Programa::escribePacientes(){
 /*Esta funcion busca dentro del fichero .txt mediante dni si extste alguna coincidencia
 y a continuacion proporciona todos los daatos relacionados al paciente*/
 bool Programa::buscarPaciente(string DNI){
+
+	string buscaDNI="DNI:"+DNI;
 	fstream fichPacientes;
 	string linea,linea2,linea3,linea4,linea5,linea6;
 	int validacion=0;
@@ -60,7 +63,7 @@ bool Programa::buscarPaciente(string DNI){
 	}
 
 	while(getline(fichPacientes,linea)){
-		if(linea.find(DNI)!=string::npos){
+		if(linea==buscaDNI){
 			validacion=1;
 			cout<<"\n\n";
 			return true;
@@ -81,6 +84,7 @@ bool Programa::buscarPaciente(string DNI){
 }
 
 bool Programa::mostrarDatos(string DNI){
+	string buscaDNI="DNI:"+DNI;
 fstream fichPacientes;
 string linea,linea2,linea3,linea4,linea5,linea6;
 int validacion=0;
@@ -95,7 +99,7 @@ fichPacientes.open("Pacientes.txt",ios::in);
 }
 
 while(getline(fichPacientes,linea)){
-if(linea.find(DNI)!=string::npos){
+if(linea==buscaDNI){
 cout<<"\nMostrando datos...\n";
 cout<<linea<<endl;
 getline(fichPacientes,linea2);
@@ -126,7 +130,6 @@ fichPacientes.close();
 fichCitas.close();
 
 if(validacion==0){
-cout<<"No se ha encontrado un paciente con un DNI coincidente"<<endl;
 return false;
 }else{
 cout<<"Exito al encontrar el paciente"<<endl;
@@ -540,34 +543,48 @@ void Programa::mostrarPacientes(){
 }
 
 void Programa::anadirHistoria(string DNI){
+	string buscaDNI="DNI:"+DNI;
     char sintoma[250];
     char tratamiento[250];
     char regularidad[250];
-    int dec;
-	ifstream fichPacientes;
-	fichPacientes.open("Pacientes.txt",ios::in);
-	ofstream fichHistoria;
-	fichHistoria.open(DNI+".txt",ios::out);
+    int dec;																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											
+	
 	string linea,linea2,linea3,linea4,linea5,linea6;
 
    string nomfich=DNI+".txt";
-	ifstream fich(nomfich.c_str());
+	ifstream fichHistoria(nomfich.c_str());
+
+	if(!fichHistoria){
+		
+		ofstream fichHistoria(nomfich.c_str());
+	
+
+	//if(existe(DNI)==false){
+			cout<<"No he encontrado el fichero"<<endl;
+	
+	fichHistoria.open(DNI+".txt",ios::out);
+	fichHistoria.close();
+	fichHistoria.open(DNI+".txt",ios::app);
+
+		ifstream fichPacientes;
+	fichPacientes.open("Pacientes.txt",ios::in);
 
 	if(!fichPacientes.is_open()){
 		fichPacientes.open("Pacientes.txt",ios::in);
 	}
 
 	while(getline(fichPacientes,linea)){
-		if(linea.find(DNI)!=string::npos){
+		if(linea==buscaDNI){
 			getline(fichPacientes,linea2);
 			getline(fichPacientes,linea3);
 			getline(fichPacientes,linea4);
 			getline(fichPacientes,linea5);
 			getline(fichPacientes,linea6);
+			
 
 		}
 
-		}
+		}  cout<<"HEEEEHEEEE"<<endl;
             fichHistoria<<"\t\t\t\tHISTORIA CLINICA\n";
             fichHistoria<<"-----------------------------------------------"<<endl;
 
@@ -576,10 +593,8 @@ void Programa::anadirHistoria(string DNI){
 			fichHistoria<<linea4+"\n";
 			fichHistoria<<linea5+"\n";
 			fichHistoria<<linea6+"\n";
-			
 
-
-          cout<<"\n\n\nIntroduce los sintomas que presenta el paciente:"<<endl;
+			cout<<"\n\n\nIntroduce los sintomas que presenta el paciente:"<<endl;
           getchar();
           cin.getline(sintoma,250,'\n');
           fichHistoria<<"-----------------------------------------------"<<endl;
@@ -587,9 +602,10 @@ void Programa::anadirHistoria(string DNI){
 	       fichHistoria<<sintoma;
 
           cout<<"Introduzca:\n [0] si desea añadir un tratamiento\n [1] si no desea añadir un tratamiento"<<endl;
+          //getchar();
           cin>>dec;
 
-          if(dec=1){
+          if(dec==0){
           	fichHistoria<<"\nTRATAMIENTO\n";
           cout<<"\nIntroduce el tratamiento que presenta el paciente:"<<endl;
           getchar();
@@ -602,12 +618,64 @@ void Programa::anadirHistoria(string DNI){
            cin.getline(regularidad,250,'\n');
 
 			fichHistoria<<regularidad;
+			cout<<"Historia añadida con exito"<<endl;
+
                     }
+
+          if(dec!=0){
          cout<<"Historia añadida con exito"<<endl;
+     }
 
 
-	fichPacientes.close();
+	
 	fichHistoria.close();
+	fichPacientes.close();
+			
+}
+           
+           //if(existe(DNI)==true){
+            else{
+           	cout<<"He encontrado el fichero"<<endl;
+           	fstream fichHistoria;
+           	fichHistoria.open(DNI+".txt",ios::app);
+
+
+          cout<<"\n\n\nIntroduce los sintomas que presenta el paciente:"<<endl;
+          getchar();
+          cin.getline(sintoma,250,'\n');
+          fichHistoria<<"-----------------------------------------------"<<endl;
+          fichHistoria<<"SINTOMAS\n";
+	       fichHistoria<<sintoma;
+
+          cout<<"Introduzca:\n [0] si desea añadir un tratamiento\n [1] si no desea añadir un tratamiento"<<endl;
+           //getchar();
+          cin>>dec;
+
+          if(dec==0){
+          	fichHistoria<<"\nTRATAMIENTO\n";
+          cout<<"\nIntroduce el tratamiento que presenta el paciente:"<<endl;
+          getchar();
+           cin.getline(tratamiento,250,'\n');
+
+			fichHistoria<<tratamiento;
+
+          cout<<"\nIntroduce la regularidad del tratamiento que presenta el paciente:"<<endl;
+           fichHistoria<<"\nREGULARIDAD\n";
+           cin.getline(regularidad,250,'\n');
+
+			fichHistoria<<regularidad;
+			fichHistoria<<"\n";
+			fichHistoria<<"-----------------------------------------------"<<endl;
+			cout<<"Historia añadida con exito"<<endl;
+                    }
+
+         if(dec!=0){
+         cout<<"Historia añadida con exito"<<endl;
+          }
+           
+	
+	fichHistoria.close();
+}
 
 }
 
@@ -629,3 +697,20 @@ void Programa::anadirHistoria(string DNI){
 
   
 }
+
+/*bool Programa::existe(string DNI){
+
+	fstream f;
+	string texto;
+	f.open(DNI+".txt", ios::in);
+	getline(f,texto);
+
+		if (!f.eof()){
+		f.close();
+		return false;
+		}
+		else{
+			f.close();
+			return true;
+		}
+}*/

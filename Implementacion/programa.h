@@ -39,6 +39,7 @@ class Programa {
 
 		void anadirHistoria(string DNI);
 		void mostrarHistoria(string DNI);
+		bool existe(string DNI);
 
 
 
