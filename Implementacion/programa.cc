@@ -293,6 +293,8 @@ void Programa::modificarNombre(string DNI){
 
 
 void Programa::modificarApellidos(string DNI){
+    
+    cout<<"Introduzca Apellido1,Apellido2"<<endl;
 	string apeaux,ape,tele,seguridad,codigo,linea,nom;
 	fstream fichPacientes;
 	fichPacientes.open("Pacientes.txt",ios::in);

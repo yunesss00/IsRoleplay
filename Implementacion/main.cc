@@ -111,7 +111,7 @@ int main(){
               cin>>DNI;
               if(pr.buscarPaciente(DNI)==true){
               	pr.menuModificar(DNI);}
-              
+
     break;
 
       case 5: system("clear");
@@ -144,8 +144,10 @@ int main(){
       case 8: system("clear");
               cout<<"Introduce el DNI del paciente:";
               cin>>DNI;
+
               ci.setDNI(DNI);
               if(pr.buscarPaciente(DNI)==true){
+              	cout<<"(Formato de la hora: hh:mm)"<<endl;
                 cout<<"Introduce la hora de la cita:";
                 cin>>hora;
                 ci.setHora(hora);
